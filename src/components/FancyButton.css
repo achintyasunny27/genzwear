@@ -1,0 +1,49 @@
+.fancy-btn {
+  position: relative;
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.fancy-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(60deg, #d7d7d7, #b0b0b0, #d7d7d7); /* Soft silver-metallic */
+  animation: gradient-slide 5s infinite;
+  transition: opacity 0.3s ease;
+}
+
+.fancy-btn:hover::before {
+  opacity: 0.9;
+}
+
+.fancy-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #2f2f2f; /* Dark fallback base */
+  border-radius: 8px;
+  z-index: -1;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.fancy-btn:hover::after {
+  opacity: 0;
+}
+
+@keyframes gradient-slide {
+  0% { transform: translateX(-50%); }
+  50% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
