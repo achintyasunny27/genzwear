@@ -5,10 +5,12 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { SearchProvider } from './context/SearchContext';
 import { Toaster } from 'react-hot-toast';
+import { AuthProvider } from './context/AuthContext';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
+   <AuthProvider>
    <SearchProvider>
       <Toaster
   position="bottom-left"
@@ -38,5 +40,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 />
     <App />
     </SearchProvider>
+     </AuthProvider>
   </BrowserRouter>
 );

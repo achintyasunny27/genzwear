@@ -13,8 +13,14 @@ import Orders from './pages/Orders';
 import { isLoggedIn } from './utils/auth';
 import { Navigate } from 'react-router-dom';
 
+import { useAuth } from './context/AuthContext';
+
  
 function App() {
+
+ const { user, loading } = useAuth();
+  if (loading) return <div className="text-center mt-20 text-lg text-gray-600">Checking login...</div>;
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -25,8 +31,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/cart" element={isLoggedIn() ? <Cart /> : <Navigate to="/login"/>} />
-          <Route path="/orders" element={isLoggedIn() ? <Orders /> : <Navigate to="/login" />} />
+          <Route path="/cart" element={ user ? <Cart /> : <Navigate to="/login"/>} />
+          <Route path="/orders" element={ user ? <Orders /> : <Navigate to="/login" />} />
 
           <Route path="/thankyou" element={<ThankYou />} />
         </Routes>

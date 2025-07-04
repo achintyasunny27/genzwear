@@ -2,7 +2,13 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+import { useAuth } from '../context/AuthContext';
+
+
 function Login() {
+
+  const { setUser } = useAuth();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -16,7 +22,9 @@ function Login() {
       const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
       localStorage.setItem("name", res.data.user.name)
-      setTimeout(() => navigate('/products'), 500);
+     setUser({ name: res.data.user.name, token: res.data.token });
+      setTimeout(() => navigate('/products'), 200);
+      
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');
     }
