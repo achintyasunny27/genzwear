@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../context/AuthContext';
 
+import Loader from '../components/Loader';
+
 
 function Login() {
 
@@ -12,6 +14,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -27,8 +30,12 @@ function Login() {
       
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');
-    }
+    }  finally {
+        setLoading(false); //  hide loader
+      }
   };
+
+    if (loading) return <Loader />;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-rose-100 flex items-center justify-center px-4">
