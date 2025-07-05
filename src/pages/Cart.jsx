@@ -13,7 +13,7 @@ function Cart() {
     const fetchCart = async () => {
       const token = localStorage.getItem('token');
       try {
-        const res = await axios.get('http://localhost:5000/api/cart', {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/cart`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setCartItems(res.data.products);
@@ -35,7 +35,7 @@ function Cart() {
   const handleRemove = async (productId) => {
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:5000/api/cart/${productId}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/cart/${productId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // remove items
@@ -48,7 +48,7 @@ function Cart() {
   const handleCheckout = async () => {
     const token = localStorage.getItem('token');
     try {
-      await axios.post('http://localhost:5000/api/orders', {}, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/orders`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success('Order placed successfully!');

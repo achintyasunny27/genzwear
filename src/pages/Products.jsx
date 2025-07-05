@@ -21,7 +21,7 @@ function Products() {
     
     const fetchProducts = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/products');
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/products`);
         setProducts(res.data);
       } catch (err) {
         console.error('Error fetching products:', err);
@@ -50,7 +50,7 @@ function Products() {
 
     try {
       await axios.post(
-        'http://localhost:5000/api/cart',
+        `${import.meta.env.VITE_API_URL}/api/cart`,
         { productId, quantity },
         {
           headers: {
