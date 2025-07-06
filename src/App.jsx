@@ -38,6 +38,21 @@ function App() {
         </Routes>
       
 
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      height: "20vh",
+      textAlign: "center",
+    }}
+  >
+    <h1>Hi, I'm Achintya 👋</h1>
+    <p>This is my customized version of the Z Store.</p>
+  </div>
+
+
       <Footer />
     </div>
   );

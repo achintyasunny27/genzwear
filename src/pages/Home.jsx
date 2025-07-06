@@ -24,7 +24,7 @@ function Home() {
         <section className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="text-center bg-white/80 p-6 rounded-md shadow-md">
             <h1 className="text-4xl sm:text-5xl font-bold text-purple-700 mb-4">
-              Welcome to The GenZ Store 
+              Welcome to Achintya's GenZ Store 
             </h1>
             <p className="text-lg text-gray-700 max-w-xl mx-auto">
               Discover the latest fashion trends at unbeatable prices.
